@@ -1,4 +1,4 @@
-package com.udemy.newsapiclient.presentation
+package com.udemy.newsapiclient.presentation.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

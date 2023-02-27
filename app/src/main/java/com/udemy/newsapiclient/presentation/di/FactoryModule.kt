@@ -2,7 +2,7 @@ package com.udemy.newsapiclient.presentation.di
 
 import android.app.Application
 import com.udemy.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
-import com.udemy.newsapiclient.presentation.NewsViewModelFactory
+import com.udemy.newsapiclient.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
