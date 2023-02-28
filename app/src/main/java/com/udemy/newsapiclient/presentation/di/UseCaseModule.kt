@@ -2,6 +2,7 @@ package com.udemy.newsapiclient.presentation.di
 
 import com.udemy.newsapiclient.domain.repository.NewsRepository
 import com.udemy.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
+import com.udemy.newsapiclient.domain.usecase.GetSearchedNewsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +17,11 @@ class UseCaseModule {
     @Provides
     fun providesGetNewsHeadLinesUseCase(newsRepository: NewsRepository): GetNewsHeadlinesUseCase {
         return GetNewsHeadlinesUseCase(newsRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesGetSearchedNewsUseCase(newsRepository: NewsRepository): GetSearchedNewsUseCase {
+        return GetSearchedNewsUseCase(newsRepository)
     }
 }
