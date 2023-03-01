@@ -2,6 +2,7 @@ package com.udemy.newsapiclient.presentation.di
 
 import android.app.Application
 import com.udemy.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
+import com.udemy.newsapiclient.domain.usecase.GetSavedNewsUseCase
 import com.udemy.newsapiclient.domain.usecase.GetSearchedNewsUseCase
 import com.udemy.newsapiclient.domain.usecase.SaveNewsUseCase
 import com.udemy.newsapiclient.presentation.viewmodel.NewsViewModelFactory
@@ -21,10 +22,15 @@ class FactoryModule {
         application: Application,
         getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
         getSearchedNewsUseCase: GetSearchedNewsUseCase,
-        saveNewsUseCase: SaveNewsUseCase
+        saveNewsUseCase: SaveNewsUseCase,
+        getSavedNewsUseCase: GetSavedNewsUseCase
     ): NewsViewModelFactory {
         return NewsViewModelFactory(
-            application, getNewsHeadlinesUseCase, getSearchedNewsUseCase, saveNewsUseCase
+            application,
+            getNewsHeadlinesUseCase,
+            getSearchedNewsUseCase,
+            saveNewsUseCase,
+            getSavedNewsUseCase
         )
     }
 }

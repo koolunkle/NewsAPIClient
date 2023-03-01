@@ -50,6 +50,7 @@ class NewsFragment : Fragment() {
         fragmentNewsBinding = FragmentNewsBinding.bind(view)
         viewModel = (activity as MainActivity).viewModel
         newsAdapter = (activity as MainActivity).newsAdapter
+
         newsAdapter.setOnItemClickListener {
             if (it.equals(null)) {
                 Toast.makeText(activity, "No article available", Toast.LENGTH_SHORT).show()
