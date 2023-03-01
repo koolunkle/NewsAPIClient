@@ -8,20 +8,27 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.udemy.newsapiclient.data.model.APIResponse
+import com.udemy.newsapiclient.data.model.Article
 import com.udemy.newsapiclient.data.util.Resource
 import com.udemy.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
 import com.udemy.newsapiclient.domain.usecase.GetSearchedNewsUseCase
+import com.udemy.newsapiclient.domain.usecase.SaveNewsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(
     private val application: Application,
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
-    private val getSearchedNewsUseCase: GetSearchedNewsUseCase
+    private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
+    private val saveNewsUseCase: SaveNewsUseCase
 ) : AndroidViewModel(application) {
 
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
     val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+
+    fun saveArticle(article: Article) = viewModelScope.launch(Dispatchers.IO) {
+        saveNewsUseCase.execute(article)
+    }
 
     fun getSearchedNews(country: String, page: Int, searchQuery: String) =
         viewModelScope.launch(Dispatchers.IO) {
