@@ -3,17 +3,15 @@ package com.udemy.newsapiclient.presentation.viewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.udemy.newsapiclient.domain.usecase.GetNewsHeadlinesUseCase
-import com.udemy.newsapiclient.domain.usecase.GetSavedNewsUseCase
-import com.udemy.newsapiclient.domain.usecase.GetSearchedNewsUseCase
-import com.udemy.newsapiclient.domain.usecase.SaveNewsUseCase
+import com.udemy.newsapiclient.domain.usecase.*
 
 class NewsViewModelFactory(
     private val application: Application,
     private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
     private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
     private val saveNewsUseCase: SaveNewsUseCase,
-    private val getSavedNewsUseCase: GetSavedNewsUseCase
+    private val getSavedNewsUseCase: GetSavedNewsUseCase,
+    private val deleteSavedNewsUseCase: DeleteSavedNewsUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -22,13 +20,15 @@ class NewsViewModelFactory(
             GetNewsHeadlinesUseCase::class.java,
             GetSearchedNewsUseCase::class.java,
             SaveNewsUseCase::class.java,
-            GetSavedNewsUseCase::class.java
+            GetSavedNewsUseCase::class.java,
+            DeleteSavedNewsUseCase::class.java
         ).newInstance(
             application,
             getNewsHeadlinesUseCase,
             getSearchedNewsUseCase,
             saveNewsUseCase,
-            getSavedNewsUseCase
+            getSavedNewsUseCase,
+            deleteSavedNewsUseCase
         )
     }
 }
